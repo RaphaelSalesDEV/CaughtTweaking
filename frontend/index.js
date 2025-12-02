@@ -1,5 +1,5 @@
 // Configuração da API - ALTERE AQUI depois de fazer deploy no Railway
-const API_URL = 'http://localhost:5000'; // Depois altere para: https://seu-app.railway.app
+const API_URL = 'https://web-production-5c39.up.railway.app';
 
 let selectedFiles = [];
 let analysisResults = null;
@@ -211,4 +211,5 @@ window.addEventListener('click', (e) => {
 });
 
 // Expor função removeFile globalmente
+
 window.removeFile = removeFile;
