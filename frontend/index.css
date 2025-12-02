@@ -391,3 +391,303 @@ header h1 {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary);
 }
+
+/* ========================================
+   RESPONSIVIDADE - MOBILE FIRST
+   ======================================== */
+
+/* Tablets e telas menores (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .upload-section,
+    .results-section {
+        padding: 30px 20px;
+    }
+
+    .results-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .legend {
+        gap: 20px;
+    }
+}
+
+/* Tablets pequenos e celulares grandes (max-width: 768px) */
+@media (max-width: 768px) {
+    header {
+        margin-bottom: 25px;
+        padding: 20px 0;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .upload-section,
+    .results-section {
+        padding: 25px 15px;
+        border-radius: 15px;
+    }
+
+    .upload-box {
+        padding: 40px 20px;
+    }
+
+    .upload-box svg {
+        width: 48px;
+        height: 48px;
+    }
+
+    .upload-box p {
+        font-size: 1rem;
+    }
+
+    .file-limit {
+        font-size: 0.85rem;
+    }
+
+    .file-item {
+        padding: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .file-info {
+        width: 100%;
+    }
+
+    .file-name {
+        font-size: 0.9rem;
+        word-break: break-word;
+    }
+
+    .remove-btn {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .analyze-btn {
+        padding: 15px;
+        font-size: 1rem;
+    }
+
+    .results-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .results-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .legend {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .legend-item {
+        font-size: 0.9rem;
+    }
+
+    .modal-content {
+        padding: 25px 20px;
+        width: 95%;
+        max-height: 85vh;
+    }
+
+    .modal-content h3 {
+        font-size: 1.3rem;
+        padding-right: 30px;
+    }
+
+    .close-btn {
+        font-size: 1.8rem;
+        top: 10px;
+        right: 15px;
+    }
+
+    .similarity-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .similarity-percentage {
+        font-size: 1.1rem;
+    }
+}
+
+/* Celulares pequenos (max-width: 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 0.85rem;
+    }
+
+    .upload-section,
+    .results-section {
+        padding: 20px 12px;
+        border-radius: 12px;
+    }
+
+    .upload-box {
+        padding: 30px 15px;
+    }
+
+    .upload-box svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .upload-box p {
+        font-size: 0.95rem;
+    }
+
+    .file-limit {
+        font-size: 0.8rem;
+    }
+
+    .file-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 0.75rem;
+    }
+
+    .file-name {
+        font-size: 0.85rem;
+    }
+
+    .analyze-btn {
+        padding: 14px;
+        font-size: 0.95rem;
+    }
+
+    .analyze-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .loading {
+        padding: 40px 20px;
+    }
+
+    .spinner {
+        width: 50px;
+        height: 50px;
+    }
+
+    .loading p {
+        font-size: 1rem;
+    }
+
+    .results-section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+
+    .legend-color {
+        width: 25px;
+        height: 25px;
+    }
+
+    .legend-item {
+        font-size: 0.85rem;
+    }
+
+    .result-card {
+        padding: 15px;
+    }
+
+    .result-card h3 {
+        font-size: 1rem;
+    }
+
+    .similarity-badge {
+        padding: 6px 12px;
+        font-size: 1rem;
+    }
+
+    .modal-content {
+        padding: 20px 15px;
+    }
+
+    .modal-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .similarity-item {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Melhorias de toque para mobile */
+@media (hover: none) and (pointer: coarse) {
+    .upload-box,
+    .file-item,
+    .result-card,
+    .remove-btn,
+    .analyze-btn,
+    .close-btn {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .upload-box:active {
+        transform: scale(0.98);
+    }
+
+    .result-card:active {
+        transform: translateY(-2px);
+    }
+
+    .remove-btn:active,
+    .analyze-btn:active {
+        transform: scale(0.95);
+    }
+}
+
+/* Landscape em celulares */
+@media (max-width: 768px) and (orientation: landscape) {
+    header {
+        padding: 15px 0;
+        margin-bottom: 20px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .upload-box {
+        padding: 25px 15px;
+    }
+
+    .modal-content {
+        max-height: 90vh;
+    }
+}
