@@ -36,7 +36,11 @@ uploadBox.addEventListener('dragleave', () => {
 uploadBox.addEventListener('drop', (e) => {
     e.preventDefault();
     uploadBox.classList.remove('drag-over');
-    const files = Array.from(e.dataTransfer.files).filter(file => file.type === 'application/pdf');
+    const allowedTypes = ['.pdf', '.docx', '.doc', '.txt'];
+    const files = Array.from(e.dataTransfer.files).filter(file => {
+        const ext = '.' + file.name.split('.').pop().toLowerCase();
+        return allowedTypes.includes(ext);
+    });
     addFiles(files);
 });
 
@@ -74,15 +78,31 @@ function updateFilesList() {
         return;
     }
 
-    filesList.innerHTML = selectedFiles.map((file, index) => `
-        <div class="file-item">
-            <div class="file-info">
-                <div class="file-icon">PDF</div>
-                <span class="file-name">${file.name}</span>
+    filesList.innerHTML = selectedFiles.map((file, index) => {
+        // Detectar tipo de arquivo
+        const ext = file.name.split('.').pop().toUpperCase();
+        let iconColor = 'var(--accent)';
+        let iconText = ext;
+        
+        if (ext === 'PDF') {
+            iconColor = '#C33C54';
+        } else if (ext === 'DOCX' || ext === 'DOC') {
+            iconColor = '#2B579A';
+            iconText = 'DOC';
+        } else if (ext === 'TXT') {
+            iconColor = '#37718E';
+        }
+        
+        return `
+            <div class="file-item">
+                <div class="file-info">
+                    <div class="file-icon" style="background: ${iconColor}">${iconText}</div>
+                    <span class="file-name">${file.name}</span>
+                </div>
+                <button class="remove-btn" onclick="removeFile(${index})">Remover</button>
             </div>
-            <button class="remove-btn" onclick="removeFile(${index})">Remover</button>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 function updateAnalyzeButton() {
@@ -211,5 +231,4 @@ window.addEventListener('click', (e) => {
 });
 
 // Expor função removeFile globalmente
-
 window.removeFile = removeFile;
